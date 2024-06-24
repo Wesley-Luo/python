@@ -32,7 +32,6 @@ WHITE = ((255,255,255))
 GRAY = ((100,100,100))
 BLUE = ((0,255,0))
 
-
 class Player(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
@@ -56,7 +55,6 @@ class Player(pygame.sprite.Sprite):
                 self.rect.x = screen.get_width()-self.width
             if self.rect.x <= 0:
                 self.rect.x = 0
-
 
 class Rock(pygame.sprite.Sprite):
     def __init__(self):
