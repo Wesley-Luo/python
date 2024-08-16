@@ -12,17 +12,16 @@ life = 5
 bg_y = 0
 screen = pygame.display.set_mode((1000, 600))
 clock = pygame.time.Clock()
-start_img = pygame.image.load(os.path.join("space war","Stars.png")).convert()
-backdrop_img1 = pygame.image.load(os.path.join("space war", "backdrop1.png")).convert()
-backdrop_img2 = pygame.image.load(os.path.join("space war", "backdrop2.png")).convert()
-player_img = pygame.image.load(os.path.join("space war", "player.png")).convert()
-rock_img = pygame.image.load(os.path.join("space war", "rock.png")).convert()
-coin_img = pygame.image.load(os.path.join("space war", "coin.png")).convert()
+start_img = pygame.image.load(os.path.join("space war","Stars.png"))
+backdrop_img1 = pygame.image.load(os.path.join("space war", "backdrop1.png"))
+backdrop_img2 = pygame.image.load(os.path.join("space war", "backdrop2.png"))
+player_img = pygame.image.load(os.path.join("space war", "player.png"))
+rock_img = pygame.image.load(os.path.join("space war", "rock.png"))
+coin_img = pygame.image.load(os.path.join("space war", "coin.png"))
 win_sound = pygame.mixer.Sound(os.path.join("space war","win.wav"))
 lose_sound = pygame.mixer.Sound(os.path.join("space war","lose.wav"))
 boom_sound = pygame.mixer.Sound(os.path.join("space war","boom.wav"))
 coin_sound = pygame.mixer.Sound(os.path.join("space war","Coin.wav"))
-pygame.display.set_icon(player_img)
 pygame.mixer.music.load(os.path.join("space war","Dance Space.wav"))
 pygame.mixer.music.set_volume(0.5)
 RED = ((255, 0, 0))
@@ -31,6 +30,7 @@ BLACK = ((0,0,0))
 WHITE = ((255,255,255))
 GRAY = ((100,100,100))
 BLUE = ((0,255,0))
+pygame.display.set_icon(player_img)
 
 class Player(pygame.sprite.Sprite):
     def __init__(self):
@@ -86,7 +86,7 @@ class Coin(pygame.sprite.Sprite):
         self.rect.x = random.randint(0,screen.get_width()-self.width)
         self.rect.y = 0
     def update(self):
-        global bg_y, screen,backdrop_img
+        global bg_y, screen
         self.rect.y += self.speedy
         if running == True :
             if self.rect.y >= screen.get_height():
@@ -191,3 +191,4 @@ draw_text(screen, "life: "+(str(life)), 20, 460, 20)
 pygame.display.flip()
 time.sleep(3)
 pygame.quit()
+exit()

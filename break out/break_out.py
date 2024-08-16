@@ -29,6 +29,7 @@ pygame.mixer.music.set_volume(0.5)
 clock = pygame.time.Clock()
 screen = pygame.display.set_mode((SCRN_W,SCRN_H))
 speed = [5, 5]
+pygame.display.set_icon(ball_img)
 
 class Player(pygame.sprite.Sprite):
     def __init__(self):
@@ -108,7 +109,7 @@ def draw_text(surf,text, size, x, y):
     text_rect = text_surface.get_rect()
     text_rect.centerx = x
     text_rect.top = y
-    screen.blit(text_surface, text_rect)
+    surf.blit(text_surface, text_rect)
 
 pygame.mixer.music.play(-1)
 def draw_init():
@@ -152,9 +153,6 @@ while running:
     clock.tick(FPS)
     rock_hit = pygame.sprite.spritecollide(ball, brick_group, True, pygame.sprite.collide_circle)
 
-    if draw_init == True:
-        pygame.quit()
-
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
@@ -191,3 +189,4 @@ elif SCRN_H or left == 0:
 pygame.display.flip()
 time.sleep(3)
 pygame.quit()
+exit()
