@@ -32,6 +32,8 @@ draw = 1
 out = 1
 land_locate = [50]  
 land_pos = []
+bx=0
+by=0
 pygame.display.set_icon(walk_img)
 
 def draw_text(surf,text,size,x,y,col):
@@ -57,7 +59,15 @@ def draw_init():
                 waiting = False
 
 def fill():
-    screen.blit(back_img,(0,0))
+    global bx,by
+    key = pygame.key.get_pressed()
+    if key[pygame.K_LEFT] == 1 and ninja.rect.y <= 500:
+        bx += 7
+    if key[pygame.K_RIGHT] == 1 and ninja.rect.y <= 500:
+        bx -= 7
+    bx = bx%1000
+    screen.blit(back_img,(bx,by))
+    screen.blit(back_img,(bx-1000,by))
 
 def win():
     fill()
@@ -86,6 +96,7 @@ class Ninja(pygame.sprite.Sprite):
         self.rect.y = HEIGHT/2-50
         self.tl = 0
     def touch_land(self):
+        global bx
         key = pygame.key.get_pressed()
         jump = key[pygame.K_SPACE] == 1 or key[pygame.K_UP] == 1
         if jump:
@@ -120,6 +131,7 @@ class Ninja(pygame.sprite.Sprite):
                     bomb.left(2)
                     rocket.right(2)
                     missle.left(2)
+                    bx -= 2
                 rocketgp.update()
                 misslegp.update()
         else:
@@ -156,16 +168,20 @@ class Land(pygame.sprite.Sprite):
             self.rect.y = 300
         land_pos.append(self.rect.y)
     def left(self,sp):
+        global bx
         self.rect.x -= sp
     def right(self,sp):
+        global bx
         self.rect.x += sp
     def update(self):
-        global jump
+        global jump,bx
         key = pygame.key.get_pressed()
         if key[pygame.K_LEFT] == 1 and ninja.rect.y <= 500:
             self.right(7)
+            bx -= 7
         if key[pygame.K_RIGHT] == 1 and ninja.rect.y <= 500:
             self.left(7)
+            bx += 7
 
 class Coin(pygame.sprite.Sprite):
     def __init__(self):
