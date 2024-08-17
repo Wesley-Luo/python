@@ -47,7 +47,7 @@ def new_quest():
     entry.focus()
     entry.get()
 
-    button = tkinter.Button(font=("Helvetica",(50)),command=update,text="sumbit",bg=random.choice(["red","orange","purple"]))
+    button = tkinter.Button(font=("Helvetica",(50)),command=update,text="submit",bg=random.choice(["red","orange","purple"]))
     button.pack()
 
 def alldestroy():
