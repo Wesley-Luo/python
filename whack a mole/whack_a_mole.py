@@ -176,7 +176,7 @@ while running:
         exit()
     
     draw_text(screen, "score: "+ str(score), 35, WIDTH/2-80, 0)
-    draw_text(screen, "timer: "+ str(int(timer/15)), 35, WIDTH/2+80, 0)
+    draw_text(screen, "time: "+ str(int(timer/20)), 35, WIDTH/2+80, 0)
     pygame.display.flip()
     clock.tick(FPS)
     timer -= 1

@@ -1,0 +1,11 @@
+import tkinter
+t=tkinter.Tk()
+t.title("images")
+t.geometry("2000x400")
+f=tkinter.Button(text="button")
+t=tkinter.Label(text="text")
+c=tkinter.Checkbutton(text="label")
+t.pack()
+f.pack()
+c.pack()
+t.mainloop()
